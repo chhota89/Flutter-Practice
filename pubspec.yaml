@@ -1,0 +1,30 @@
+name: whatsapp_clone
+description: A new Flutter application.
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.0
+  http:
+  map_view:
+  share:
+  firebase_database: 0.4.3
+  cloud_firestore:
+#  firebase_storage:
+  image_picker:
+  connectivity:
+  carousel: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/company_logo.png
+    - assets/no_internet.png
+    - assets/developer_background.jpg
