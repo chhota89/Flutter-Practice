@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TODO https://blog.geekyants.com/flutter-login-animation-ab3e6ed4bd19
 class AnimationFlutterLogoPage extends StatefulWidget {
   @override
   _AnimationFlutterLogoPageState createState() =>

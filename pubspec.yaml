@@ -1,5 +1,5 @@
-name: whatsapp_clone
-description: A new Flutter application.
+name: flutter_practice
+description: Learn flutter component
 
 dependencies:
   flutter:

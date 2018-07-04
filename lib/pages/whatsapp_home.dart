@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/pages/chat_history_screen.dart';
+import 'package:flutter_practice/pages/chat_history_screen.dart';
 
 class WhatsAppHome extends StatefulWidget {
   @override
