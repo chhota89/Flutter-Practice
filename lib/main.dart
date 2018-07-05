@@ -27,6 +27,7 @@ import 'package:flutter_practice/pages/near_by_places.dart';
 import 'package:flutter_practice/pages/rest_example.dart';
 import 'package:flutter_practice/pages/stggered_animation.dart';
 import 'package:flutter_practice/pages/whatsapp_home.dart';
+import 'package:flutter_practice/pages/bottom_fab_notch.dart';
 import 'package:flutter_practice/pages/theme_bloc.dart' as themeBloc;
 
 //import 'package:firebase_core/firebase_core.dart';
@@ -56,15 +57,15 @@ class MyApp extends StatelessWidget {
       initialData: false,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return new MaterialApp(
-          title: "WhatsApp",
-          theme: snapshot.data
-              ? new ThemeData.dark()
-              : new ThemeData(
-                  primaryColor: Colors.green,
-                  accentColor: Colors.greenAccent,
-                  buttonTheme:
-                      const ButtonThemeData(textTheme: ButtonTextTheme.primary),
-                  buttonColor: Colors.green),
+            title: "WhatsApp",
+            theme: snapshot.data
+                ? new ThemeData.dark()
+                : new ThemeData(
+                    primaryColor: Colors.green,
+                    accentColor: Colors.greenAccent,
+                    buttonTheme: const ButtonThemeData(
+                        textTheme: ButtonTextTheme.primary),
+                    buttonColor: Colors.green),
 
 //        home : new RestExample(),
 //        home: new DrawerPage(),
@@ -72,7 +73,7 @@ class MyApp extends StatelessWidget {
 //      home: new LoginPageForm(),
 //        home: new PlacesListScreen(),
 //        home: new BottomNevigationPage(),
-          //popup menu, dialog, bottom nevigation
+            //popup menu, dialog, bottom nevigation
 //          home: new MaterialPage(),
 //      home: new ChatScreen(),
 //        home: new ConnectivityPage(),
@@ -90,8 +91,8 @@ class MyApp extends StatelessWidget {
 //            home: new ThemeChangePage(snapshot.data),
 //          home: new StaggeredAnimationPage(),
 //          home: new ScatchDrawPage(),
-            home: new CupertinoPage()
-        );
+//            home: new CupertinoPage()
+            home: BottomAppBarPage());
       },
     );
   }
