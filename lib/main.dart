@@ -1,8 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/localization/DemoLocalizationsDelegate.dart';
 import 'package:flutter_practice/pages/cupertino_ios_theme.dart';
 import 'package:flutter_practice/pages/draw_scatch.dart';
+import 'package:flutter_practice/pages/loaclization_page.dart';
+import 'package:flutter_practice/pages/page_viewpager.dart';
+import 'package:flutter_practice/pages/place_type_page.dart';
 import 'package:map_view/map_view.dart';
 import 'package:flutter_practice/pages/accucia_app_home.dart';
 import 'package:flutter_practice/pages/animation_flutter_logo.dart';
@@ -33,6 +37,8 @@ import 'package:flutter_practice/pages/theme_bloc.dart' as themeBloc;
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_storage/firebase_storage.dart';
 
+import 'package:flutter\_localizations/flutter\_localizations.dart';
+
 var API_KEY = "AIzaSyD46cZZidNyb3So7Ze0dFFLZy1m2MirgbQ";
 
 Future main() async {
@@ -57,6 +63,27 @@ class MyApp extends StatelessWidget {
       initialData: false,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return new MaterialApp(
+            supportedLocales: [
+              const Locale('tr', ''),
+              const Locale('en', ''),
+              const Locale('ja', '')
+            ],
+            localizationsDelegates: [
+              const DemoLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate
+            ],
+            localeResolutionCallback:
+                (Locale locale, Iterable<Locale> supportedLocales) {
+              for (Locale supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode ||
+                    supportedLocale.countryCode == locale.countryCode) {
+                  return supportedLocale;
+                }
+              }
+
+              return supportedLocales.first;
+            },
             title: "WhatsApp",
             theme: snapshot.data
                 ? new ThemeData.dark()
@@ -71,7 +98,7 @@ class MyApp extends StatelessWidget {
 //        home: new DrawerPage(),
 //      home: new WhatsAppHome(),
 //      home: new LoginPageForm(),
-//        home: new PlacesListScreen(),
+//          home: new PlacesListScreen(),
 //        home: new BottomNevigationPage(),
             //popup menu, dialog, bottom nevigation
 //          home: new MaterialPage(),
@@ -92,7 +119,10 @@ class MyApp extends StatelessWidget {
 //          home: new StaggeredAnimationPage(),
 //          home: new ScatchDrawPage(),
 //            home: new CupertinoPage()
-            home: BottomAppBarPage());
+//            home: BottomAppBarPage()
+//          home: new LocalizationPage(),
+//            home: new MobilePageView(),
+            home: new PlaceTypePage());
       },
     );
   }

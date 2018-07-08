@@ -37,6 +37,15 @@ class PlaceServices {
 }
 
 class PlacesListScreen extends StatefulWidget {
+  PlacesListScreen({this.name, this.placeType, this.lat, this.lng})
+      : assert(placeType != null),
+        assert(name != null);
+
+  double lat;
+  double lng;
+  final String placeType;
+  final String name;
+
   @override
   _PlacesListScreenState createState() => new _PlacesListScreenState();
 }
@@ -74,6 +83,7 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
       return new ListView(
           children: _places.map((f) {
         return new Card(
+          elevation: 3.0,
           child: new ListTile(
             title: new Text(f.name),
             leading: new Image.network(f.icon),
