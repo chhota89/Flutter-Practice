@@ -14,7 +14,7 @@ class _FirestoreServePageState extends State<FirestoreServePage> {
     return Scaffold(
         appBar: AppBar(title: Text("Band name serve")),
         body: new StreamBuilder(
-            stream: Firestore.instance.collection("bandnames").snapshots,
+            stream: Firestore.instance.collection("bandnames").snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(

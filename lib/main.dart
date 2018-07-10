@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/localization/DemoLocalizationsDelegate.dart';
 import 'package:flutter_practice/pages/cupertino_ios_theme.dart';
 import 'package:flutter_practice/pages/draw_scatch.dart';
+import 'package:flutter_practice/pages/inherited_widget_page.dart';
 import 'package:flutter_practice/pages/loaclization_page.dart';
 import 'package:flutter_practice/pages/page_viewpager.dart';
 import 'package:flutter_practice/pages/place_type_page.dart';
-import 'package:map_view/map_view.dart';
 import 'package:flutter_practice/pages/accucia_app_home.dart';
 import 'package:flutter_practice/pages/animation_flutter_logo.dart';
 import 'package:flutter_practice/pages/app_intro.dart';
@@ -50,7 +50,6 @@ Future main() async {
 //    app: app,
 //      app: app, storageBucket: 'gs://flutter-firebase-plugins.appspot.com');
 
-  MapView.setApiKey(API_KEY);
   runApp(new MyApp());
 }
 
@@ -63,36 +62,36 @@ class MyApp extends StatelessWidget {
       initialData: false,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return new MaterialApp(
-            supportedLocales: [
-              const Locale('tr', ''),
-              const Locale('en', ''),
-              const Locale('ja', '')
-            ],
-            localizationsDelegates: [
-              const DemoLocalizationsDelegate(),
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate
-            ],
-            localeResolutionCallback:
-                (Locale locale, Iterable<Locale> supportedLocales) {
-              for (Locale supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode == locale.languageCode ||
-                    supportedLocale.countryCode == locale.countryCode) {
-                  return supportedLocale;
-                }
+          supportedLocales: [
+            const Locale('tr', ''),
+            const Locale('en', ''),
+            const Locale('ja', '')
+          ],
+          localizationsDelegates: [
+            const DemoLocalizationsDelegate(),
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate
+          ],
+          localeResolutionCallback:
+              (Locale locale, Iterable<Locale> supportedLocales) {
+            for (Locale supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode ||
+                  supportedLocale.countryCode == locale.countryCode) {
+                return supportedLocale;
               }
+            }
 
-              return supportedLocales.first;
-            },
-            title: "WhatsApp",
-            theme: snapshot.data
-                ? new ThemeData.dark()
-                : new ThemeData(
-                    primaryColor: Colors.green,
-                    accentColor: Colors.greenAccent,
-                    buttonTheme: const ButtonThemeData(
-                        textTheme: ButtonTextTheme.primary),
-                    buttonColor: Colors.green),
+            return supportedLocales.first;
+          },
+          title: "WhatsApp",
+          theme: snapshot.data
+              ? new ThemeData.dark()
+              : new ThemeData(
+                  primaryColor: Colors.green,
+                  accentColor: Colors.greenAccent,
+                  buttonTheme:
+                      const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                  buttonColor: Colors.green),
 
 //        home : new RestExample(),
 //        home: new DrawerPage(),
@@ -100,7 +99,7 @@ class MyApp extends StatelessWidget {
 //      home: new LoginPageForm(),
 //          home: new PlacesListScreen(),
 //        home: new BottomNevigationPage(),
-            //popup menu, dialog, bottom nevigation
+          //popup menu, dialog, bottom nevigation
 //          home: new MaterialPage(),
 //      home: new ChatScreen(),
 //        home: new ConnectivityPage(),
@@ -122,7 +121,9 @@ class MyApp extends StatelessWidget {
 //            home: BottomAppBarPage()
 //          home: new LocalizationPage(),
 //            home: new MobilePageView(),
-            home: new PlaceTypePage());
+//            home: new PlaceTypePage(),
+          home: new InheritedWidgetPageExample(),
+        );
       },
     );
   }

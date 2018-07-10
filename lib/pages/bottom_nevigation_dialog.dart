@@ -59,11 +59,11 @@ class _MaterialPageState extends State<MaterialPage> {
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-          onPressed: (){
-            print("share button click");
-            share("djksfjslkj");
-          },
-        child: new Icon(Icons.share,color: Colors.white),
+        onPressed: () {
+          print("share button click");
+          Share.share("djksfjslkj");
+        },
+        child: new Icon(Icons.share, color: Colors.white),
       ),
     );
   }

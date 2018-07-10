@@ -23,7 +23,6 @@
 
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD46cZZidNyb3So7Ze0dFFLZy1m2MirgbQ"/>
 
-        <activity android:name="com.apptreesoftware.mapview.MapActivity" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

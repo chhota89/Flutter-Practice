@@ -21,10 +21,10 @@ class PlaceServices {
     return _service;
   }
 
-  final String placeUrl =
-      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyAGj8s0vkxHJWuP3jxbMb66h91cdd0Eu_E";
-
-  Future<List<Places>> getListPlaces() async {
+  Future<List<Places>> getListPlaces(
+      String placeType, double lat, double lng) async {
+    var placeUrl =
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1500&type=${placeType}&key=AIzaSyAGj8s0vkxHJWuP3jxbMb66h91cdd0Eu_E";
     var response =
         await http.get(placeUrl, headers: {"Accept": "application/json"});
 
@@ -57,7 +57,10 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    PlaceServices.get().getListPlaces().then((data) {
+    PlaceServices
+        .get()
+        .getListPlaces(this.widget.placeType, this.widget.lat, this.widget.lng)
+        .then((data) {
       this.setState(() {
         _places = data;
       });

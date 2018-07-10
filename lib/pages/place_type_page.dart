@@ -36,7 +36,7 @@ class PlaceTypePage extends StatelessWidget {
     final Orientation orientation = MediaQuery.of(context).orientation;
     _location.getLocation.then((Map<String, double> value) {
       currentLocation = value;
-
+      print(" ${currentLocation["latitude"]}  ${currentLocation["longitude"]}");
     });
     return new Scaffold(
       appBar: AppBar(
@@ -63,7 +63,12 @@ class PlaceTypePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new PlacesListScreen()));
+                        builder: (context) => new PlacesListScreen(
+                              name: place.name,
+                              placeType: place.placeType,
+                              lat: currentLocation["latitude"],
+                              lng: currentLocation["longitude"],
+                            )));
               },
             );
           }).toList()),

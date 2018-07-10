@@ -21,7 +21,6 @@ class BottomAppBarPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         color: Colors.black,
-        hasNotch: true,
         child: new Container(
           height: 50.0,
         ),
