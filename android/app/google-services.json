@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "991680170852-nt4iek5lha25tkn1t2pv3gt9h6idu683.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chhota.firstsample",
+            "certificate_hash": "e291e623aab57ad906b0a7b23e12225865b15d03"
+          }
+        },
+        {
           "client_id": "991680170852-9p41gl5lf54nonsn18et134vggf1n5uc.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991680170852-9p41gl5lf54nonsn18et134vggf1n5uc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

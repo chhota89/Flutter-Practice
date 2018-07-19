@@ -2,10 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/localization/DemoLocalizationsDelegate.dart';
+import 'package:flutter_practice/pages/butto_samples.dart';
 import 'package:flutter_practice/pages/cupertino_ios_theme.dart';
 import 'package:flutter_practice/pages/draw_scatch.dart';
+import 'package:flutter_practice/pages/graph_page.dart';
 import 'package:flutter_practice/pages/inherited_widget_page.dart';
 import 'package:flutter_practice/pages/loaclization_page.dart';
+import 'package:flutter_practice/pages/moviesearch/movie_search_page.dart';
+import 'package:flutter_practice/pages/page_transformation.dart';
 import 'package:flutter_practice/pages/page_viewpager.dart';
 import 'package:flutter_practice/pages/place_type_page.dart';
 import 'package:flutter_practice/pages/accucia_app_home.dart';
@@ -62,36 +66,36 @@ class MyApp extends StatelessWidget {
       initialData: false,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return new MaterialApp(
-          supportedLocales: [
-            const Locale('tr', ''),
-            const Locale('en', ''),
-            const Locale('ja', '')
-          ],
-          localizationsDelegates: [
-            const DemoLocalizationsDelegate(),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate
-          ],
-          localeResolutionCallback:
-              (Locale locale, Iterable<Locale> supportedLocales) {
-            for (Locale supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale.languageCode ||
-                  supportedLocale.countryCode == locale.countryCode) {
-                return supportedLocale;
+            supportedLocales: [
+              const Locale('tr', ''),
+              const Locale('en', ''),
+              const Locale('ja', '')
+            ],
+            localizationsDelegates: [
+              const DemoLocalizationsDelegate(),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate
+            ],
+            localeResolutionCallback:
+                (Locale locale, Iterable<Locale> supportedLocales) {
+              for (Locale supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode ||
+                    supportedLocale.countryCode == locale.countryCode) {
+                  return supportedLocale;
+                }
               }
-            }
 
-            return supportedLocales.first;
-          },
-          title: "WhatsApp",
-          theme: snapshot.data
-              ? new ThemeData.dark()
-              : new ThemeData(
-                  primaryColor: Colors.green,
-                  accentColor: Colors.greenAccent,
-                  buttonTheme:
-                      const ButtonThemeData(textTheme: ButtonTextTheme.primary),
-                  buttonColor: Colors.green),
+              return supportedLocales.first;
+            },
+            title: "WhatsApp",
+            theme: snapshot.data
+                ? new ThemeData.dark()
+                : new ThemeData(
+                    primaryColor: Colors.green,
+                    accentColor: Colors.greenAccent,
+                    buttonTheme: const ButtonThemeData(
+                        textTheme: ButtonTextTheme.primary),
+                    buttonColor: Colors.green),
 
 //        home : new RestExample(),
 //        home: new DrawerPage(),
@@ -99,13 +103,13 @@ class MyApp extends StatelessWidget {
 //      home: new LoginPageForm(),
 //          home: new PlacesListScreen(),
 //        home: new BottomNevigationPage(),
-          //popup menu, dialog, bottom nevigation
+            //popup menu, dialog, bottom nevigation
 //          home: new MaterialPage(),
 //      home: new ChatScreen(),
 //        home: new ConnectivityPage(),
 //        home:new CustomFabPage()
 //      home: new MaterialDialogListPage(),
-//      home: new FirestoreServePage(),
+//          home: new FirestoreServePage(),
 //      home: new DeveloperPage(),
 //      home: new AnimationFlutterLogoPage(),
 //        home: new AccuciaHome(),
@@ -122,8 +126,11 @@ class MyApp extends StatelessWidget {
 //          home: new LocalizationPage(),
 //            home: new MobilePageView(),
 //            home: new PlaceTypePage(),
-          home: new InheritedWidgetPageExample(),
-        );
+//          home: new InheritedWidgetPageExample(),
+//            home: new ButtonSamplePage(),
+//          home: new MovieSearchPage(),
+//            home: new GraphPage());
+            home: new PageTransformationExample());
       },
     );
   }

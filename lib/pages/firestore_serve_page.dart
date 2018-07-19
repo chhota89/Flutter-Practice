@@ -21,12 +21,14 @@ class _FirestoreServePageState extends State<FirestoreServePage> {
                   child: CircularProgressIndicator(),
                 );
               } else {
+                print("Data recevided. ............");
+                print("Data length ${snapshot.data.documents[0]['name']}");
                 return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
-                    //TODO error data.documents not found. Check for firestore version
-                    _buildListItem(context, snapshot.data.documents[index]);
+                    return _buildListItem(
+                        context, snapshot.data.documents[index]);
                   },
-                  itemCount: snapshot.data.documets.length(),
+                  itemCount: snapshot.data.documents.length,
                   itemExtent: 60.0,
                 );
               }
@@ -35,22 +37,26 @@ class _FirestoreServePageState extends State<FirestoreServePage> {
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
     return ListTile(
-      title: Row(
-        children: <Widget>[
-          new Expanded(
-              child: Text(document['name'],
-                  style: Theme.of(context).textTheme.headline)),
-          Container(
-            decoration: const BoxDecoration(color: Colors.lightGreenAccent),
-            child: new Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(document['votes'].toString(),
-                  style: Theme.of(context).textTheme.display1),
-            ),
-          )
-        ],
-      ),
-      onTap: () {},
-    );
+        title: Row(
+          children: <Widget>[
+            new Expanded(
+                child: Text(document['name'],
+                    style: Theme.of(context).textTheme.headline)),
+            Container(
+              decoration: const BoxDecoration(color: Colors.lightGreenAccent),
+              child: new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(document['votes'].toString(),
+                    style: Theme.of(context).textTheme.display1),
+              ),
+            )
+          ],
+        ),
+        onTap: () => Firestore.instance.runTransaction((transaction) async {
+              DocumentSnapshot freshSnap =
+                  await transaction.get(document.reference);
+              await transaction.update(
+                  freshSnap.reference, {'votes': freshSnap['votes'] + 1});
+            }));
   }
 }
