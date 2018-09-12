@@ -60,7 +60,7 @@ class ButtonSamplePage extends StatelessWidget {
                     onPressed: () {},
                     child: Icon(Icons.add),
                   ),
-                  FloatingActionButton(onPressed: () {}, child: Text("Add")),
+//                  FloatingActionButton(onPressed: () {}, child: Text("Add")),
                 ],
               ),
               Row(

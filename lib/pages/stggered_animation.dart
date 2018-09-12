@@ -39,7 +39,7 @@ class _StaggeredAnimationPageState extends State<StaggeredAnimationPage>
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 10.0; // 1.0 is normal animation speed.
+//    timeDilation = 10.0; // 1.0 is normal animation speed.
     return new Scaffold(
       appBar: AppBar(
         title: Text("Staggerd Animation"),

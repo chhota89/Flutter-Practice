@@ -63,6 +63,7 @@ class _MyHomePageState extends State<FeatureDiscoveryPage> {
           title: 'FAB Feature',
           description: 'This is the FAB and it does stuff.',
           child: new FloatingActionButton(
+            heroTag: "add",
             child: new Icon(
               Icons.add,
             ),
@@ -145,6 +146,7 @@ class _ContentState extends State<Content> {
                 description:
                     'Get car, walking, cycling or public transit directions to this place.',
                 child: new FloatingActionButton(
+                  heroTag: "drive",
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.blue,
                   child: new Icon(

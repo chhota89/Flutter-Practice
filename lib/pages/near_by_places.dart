@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/place_details_screen.dart';
+import '../main.dart';
 
 class Places {
   String icon;
@@ -36,8 +37,8 @@ class PlaceServices {
   }
 }
 
-class PlacesListScreen extends StatefulWidget {
-  PlacesListScreen({this.name, this.placeType, this.lat, this.lng})
+class PlacesListScreenPage extends StatefulWidget {
+  PlacesListScreenPage({this.name, this.placeType, this.lat, this.lng})
       : assert(placeType != null),
         assert(name != null);
 
@@ -47,10 +48,10 @@ class PlacesListScreen extends StatefulWidget {
   final String name;
 
   @override
-  _PlacesListScreenState createState() => new _PlacesListScreenState();
+  _PlacesListScreenPageState createState() => new _PlacesListScreenPageState();
 }
 
-class _PlacesListScreenState extends State<PlacesListScreen> {
+class _PlacesListScreenPageState extends State<PlacesListScreenPage> {
   List<Places> _places;
 
   @override
@@ -89,9 +90,12 @@ class _PlacesListScreenState extends State<PlacesListScreen> {
           elevation: 3.0,
           child: new ListTile(
             title: new Text(f.name),
-            leading: new Image.network(f.icon),
+            leading: Container(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: new Image.network(f.icon)),
             subtitle: new Text(f.vicinity),
             trailing: new Row(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Icon(
                   Icons.star,

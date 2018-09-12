@@ -63,7 +63,7 @@ class PlaceTypePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     new MaterialPageRoute(
-                        builder: (context) => new PlacesListScreen(
+                        builder: (context) => new PlacesListScreenPage(
                               name: place.name,
                               placeType: place.placeType,
                               lat: currentLocation["latitude"],
