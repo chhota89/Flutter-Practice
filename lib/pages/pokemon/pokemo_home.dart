@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/pokemon/poke_hub.dart';
+import 'package:flutter_practice/pages/pokemon/pokemon_details.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -71,7 +72,13 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                                   ],
                                 ),
                               )),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        PokemonDetails(pokemon: poke)));
+                          },
                         ),
                       ))
                   .toList()),

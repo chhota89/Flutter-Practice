@@ -7,6 +7,8 @@ class HomePage extends StatelessWidget {
 
     List<HomeMenuModel> homeMenuList = [
       HomeMenuModel(
+          icon: "assets/company_logo.png", name: "Ipl 2015", id: "/ipl"),
+      HomeMenuModel(
           icon: "assets/company_logo.png", name: "Rest Api", id: "/rest_api"),
       HomeMenuModel(
           icon: "assets/company_logo.png", name: "Drawer page", id: "/drawer"),

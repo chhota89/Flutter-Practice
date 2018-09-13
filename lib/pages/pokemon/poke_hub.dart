@@ -1,5 +1,3 @@
-//json 2 dart file convert https://javiercbk.github.io/json_to_dart/
-
 class PokeHub {
   List<Pokemon> pokemon;
 

@@ -34,7 +34,7 @@ class PlaceTypePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Orientation orientation = MediaQuery.of(context).orientation;
-    _location.getLocation.then((Map<String, double> value) {
+    _location.getLocation().then((Map<String, double> value) {
       currentLocation = value;
       print(" ${currentLocation["latitude"]}  ${currentLocation["longitude"]}");
     });

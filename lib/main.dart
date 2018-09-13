@@ -9,6 +9,7 @@ import 'package:flutter_practice/pages/draw_scatch.dart';
 import 'package:flutter_practice/pages/graph_page.dart';
 import 'package:flutter_practice/pages/home_page.dart';
 import 'package:flutter_practice/pages/inherited_widget_page.dart';
+import 'package:flutter_practice/pages/ipl/ipl_teams.dart';
 import 'package:flutter_practice/pages/loaclization_page.dart';
 import 'package:flutter_practice/pages/moviesearch/movie_search_page.dart';
 import 'package:flutter_practice/pages/page_transformation.dart';
@@ -145,7 +146,8 @@ class MyApp extends StatelessWidget {
               '/graph_page': (BuildContext context) => new GraphPage(),
               '/page_transform': (BuildContext context) =>
                   new PageTransformationExample(),
-              '/pokemon': (BuildContext context) => new PokemonHomePage()
+              '/pokemon': (BuildContext context) => new PokemonHomePage(),
+              '/ipl': (BuildContext context) => new IplTeamsPage()
             },
             theme: snapshot.data
                 ? new ThemeData.dark()
@@ -155,45 +157,7 @@ class MyApp extends StatelessWidget {
                     buttonTheme: const ButtonThemeData(
                         textTheme: ButtonTextTheme.primary),
                     buttonColor: Colors.green),
-
-//        home : new RestExample(),
-//        home: new DrawerPage(),
-//      home: new WhatsAppHome(),
-//      home: new LoginPageForm(),
-//          home: new PlacesListScreen(),
-//        home: new BottomNevigationPage(),
-            //popup menu, dialog, bottom nevigation
-//          home: new MaterialPage(),
-//      home: new ChatScreen(),
-//        home: new ConnectivityPage(),
-//        home:new CustomFabPage()
-//      home: new MaterialDialogListPage(),
-//          home: new FirestoreServePage(),
-//      home: new DeveloperPage(),
-//      home: new AnimationFlutterLogoPage(),
-//        home: new AccuciaHome(),
-//        home: new CollpsingToolbarPage(),
-//      home: new BackDropPage(),
-//        home: new PageSelectorDemo(),
-//        home: new FeatureDiscoveryPage(),
-//        home: new BottomDialogPage();
-//            home: new ThemeChangePage(snapshot.data),
-//          home: new StaggeredAnimationPage(),
-//          home: new ScatchDrawPage(),
-//            home: new CupertinoPage()
-//            home: BottomAppBarPage()
-//          home: new LocalizationPage(),
-//            home: new MobilePageView(),
-//            home: new PlaceTypePage(),
-//          home: new InheritedWidgetPageExample(),
-//            home: new ButtonSamplePage(),
-//          home: new MovieSearchPage(),
-//            home: new GraphPage());
-//            home: new PageTransformationExample());
-            home: new HomePage()
-
-//          home: new PlaceDetailsScreen(),
-            );
+            home: new HomePage());
       },
     );
   }

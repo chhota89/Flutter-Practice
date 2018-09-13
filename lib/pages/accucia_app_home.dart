@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'developer_page.dart';
-import 'package:carousel/carousel.dart';
 
 class AccuciaHome extends StatefulWidget {
   @override
