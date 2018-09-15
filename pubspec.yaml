@@ -17,7 +17,7 @@ dependencies:
   share:
   firebase_database:
   cloud_firestore:
-#  firebase_storage:
+  firebase_storage:
   image_picker:
   connectivity:
 #  carousel: ^0.0.1

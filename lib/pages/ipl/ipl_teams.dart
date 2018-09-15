@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter_practice/pages/ipl/ipl_model.dart';
+import 'package:flutter_practice/pages/ipl/team_players.dart';
 
 class IplTeamsPage extends StatefulWidget {
   @override
@@ -12,44 +14,44 @@ class _IplTeamsState extends State<IplTeamsPage> {
   final reference =
       FirebaseDatabase.instance.reference().child('ipl').child('tean_info');
 
+  List<IplTeamModel> teamsList = List();
+
+  @override
+  void initState() {
+    super.initState();
+
+    reference.onChildAdded.listen(_onEntryAdded);
+    reference.onChildChanged.listen(_onEntryChange);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: AppBar(
           title: Text("Ipl 2015"),
         ),
-        body: new FirebaseAnimatedList(
-            query: reference,
-            itemBuilder: (_, DataSnapshot snapshot, Animation<double> animation,
-                int position) {
-              return IplTeamWidget(team: IplTeamModel.fromSnapshot(snapshot));
-            }));
+        body: GridView.count(
+            crossAxisCount: 2,
+            children:
+                teamsList.map((team) => IplTeamWidget(team: team)).toList()));
   }
-}
 
-class IplTeamModel {
-  String name;
-  String captain;
-  String coach;
-  String homeVenue;
-  String imgUrl;
-  String owner;
+  void _onEntryAdded(Event event) {
+    setState(() {
+      teamsList.add(IplTeamModel.fromSnapshot(event.snapshot));
+    });
+  }
 
-  IplTeamModel(
-      {this.name,
-      this.captain,
-      this.coach,
-      this.homeVenue,
-      this.imgUrl,
-      this.owner});
+  void _onEntryChange(Event event) {
+    var newTeam = IplTeamModel.fromSnapshot(event.snapshot);
+    var old = teamsList.singleWhere((entry) {
+      return entry.name == newTeam.name;
+    });
 
-  IplTeamModel.fromSnapshot(DataSnapshot dataSnapshot)
-      : name = dataSnapshot.value["team_name"],
-        captain = dataSnapshot.value["team_captain"],
-        coach = dataSnapshot.value["team_coach"],
-        homeVenue = dataSnapshot.value["team_home_venue"],
-        imgUrl = dataSnapshot.value["team_img_url"],
-        owner = dataSnapshot.value["team_owner"];
+    setState(() {
+      teamsList[teamsList.indexOf(old)] = newTeam;
+    });
+  }
 }
 
 class IplTeamWidget extends StatelessWidget {
@@ -58,6 +60,14 @@ class IplTeamWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Text(team.name);
+    return InkWell(
+        child: new Text(team.name),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      TeamPlayersPage(team: team)));
+        });
   }
 }
