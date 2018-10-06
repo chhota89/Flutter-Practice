@@ -68,7 +68,6 @@ class PlayerSortInfoWidget extends StatefulWidget {
 
 class PlayerSortInfoWidgetState extends State<PlayerSortInfoWidget> {
   var url;
-
   @override
   void initState() {
     super.initState();
@@ -104,6 +103,6 @@ class PlayerSortInfoWidgetState extends State<PlayerSortInfoWidget> {
         .child(widget.player.imageUrl)
         .getDownloadURL();
 
-    setState(() {});
+    if (this.mounted) setState(() {});
   }
 }

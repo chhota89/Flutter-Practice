@@ -3,6 +3,7 @@ import 'package:flutter_practice/pages/pokemon/poke_hub.dart';
 import 'package:flutter_practice/pages/pokemon/pokemon_details.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 
 //json 2 dart file convert https://javiercbk.github.io/json_to_dart/
 class PokemonHomePage extends StatefulWidget {
@@ -59,9 +60,9 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                                     Container(
                                       height: 100.0,
                                       width: 100.0,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: NetworkImage(poke.img))),
+                                      child: CachedNetworkImage(
+                                        imageUrl: poke.img,
+                                      ),
                                     ),
                                     Text(
                                       poke.name,

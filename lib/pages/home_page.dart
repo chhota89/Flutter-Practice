@@ -125,7 +125,13 @@ class HomePage extends StatelessWidget {
           name: "Page transformation",
           id: "/page_transform"),
       HomeMenuModel(
-          icon: "assets/company_logo.png", name: "Pokemon App", id: "/pokemon")
+          icon: "assets/company_logo.png", name: "Pokemon App", id: "/pokemon"),
+      HomeMenuModel(
+          icon: "assets/company_logo.png", name: "Svg Image", id: "/svg_image"),
+      HomeMenuModel(
+          icon: "assets/company_logo.png",
+          name: "Stepper Page",
+          id: "/stepper_page")
     ];
 
     return new Scaffold(

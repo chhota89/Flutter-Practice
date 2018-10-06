@@ -38,10 +38,12 @@ import 'package:flutter_practice/pages/material_dialog.dart';
 import 'package:flutter_practice/pages/near_by_places.dart';
 import 'package:flutter_practice/pages/pokemon/pokemo_home.dart';
 import 'package:flutter_practice/pages/rest_example.dart';
+import 'package:flutter_practice/pages/stepper_page.dart';
 import 'package:flutter_practice/pages/stggered_animation.dart';
 import 'package:flutter_practice/pages/whatsapp_home.dart';
 import 'package:flutter_practice/pages/bottom_fab_notch.dart';
 import 'package:flutter_practice/pages/theme_bloc.dart' as themeBloc;
+import 'package:flutter_practice/pages/widgestest/svgimage_test.dart';
 import 'package:map_view/map_view.dart';
 
 //import 'package:firebase_core/firebase_core.dart';
@@ -147,7 +149,9 @@ class MyApp extends StatelessWidget {
               '/page_transform': (BuildContext context) =>
                   new PageTransformationExample(),
               '/pokemon': (BuildContext context) => new PokemonHomePage(),
-              '/ipl': (BuildContext context) => new IplTeamsPage()
+              '/ipl': (BuildContext context) => new IplTeamsPage(),
+              '/svg_image': (BuildContext context) => new SvgImagePage(),
+              '/stepper_page': (BuildContext context) => new StepperPage(),
             },
             theme: snapshot.data
                 ? new ThemeData.dark()

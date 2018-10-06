@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/moviesearch/model.dart';
+import 'package:flutter_practice/pages/pokemon/pokemo_home.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -80,7 +81,16 @@ class _MovieSearchPageState extends State<MovieSearchPage> {
     return new Scaffold(
       appBar: AppBar(
         title: Text("Movie Search"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: SearchData());
+            },
+          )
+        ],
       ),
+      drawer: Drawer(),
       body: Container(
         padding: const EdgeInsets.all(10.0),
         child: new Column(
@@ -146,5 +156,120 @@ class _MovieSearchPageState extends State<MovieSearchPage> {
         ),
       ),
     );
+  }
+}
+
+class SearchData extends SearchDelegate<String> {
+  final cities = [
+    "Mumbai",
+    "Delhi",
+    "Bengaluru",
+    "Ahmedabad",
+    "Hyderabad",
+    "Chennai",
+    "Kolkata",
+    "Pune",
+    "Jaipur",
+    "Surat",
+    "Lucknow",
+    "Kanpur",
+    "Nagpur",
+    "Patna",
+    "Indore",
+    "Thane",
+    "Bhopal",
+    "Visakhapatnam",
+    "Vadodara",
+    "Firozabad",
+    "Ludhiana",
+    "Rajkot",
+    "Agra",
+    "Siliguri",
+    "Nashik",
+    "Faridabad",
+    "Patiala",
+    "Meerut",
+    "Kalyan-Dombivali",
+    "Vasai-Virar",
+    "Varanasi",
+    "Srinagar",
+    "Dhanbad",
+    "Jodhpur",
+    "Amritsar",
+    "Raipur",
+    "Allahabad",
+    "Coimbatore",
+    "Jabalpur",
+    "Gwalior",
+    "Vijayawada",
+    "Madurai",
+    "Guwahati",
+    "Chandigarh"
+  ];
+
+  final recentCities = [
+    "Delhi",
+    "Bengaluru",
+    "Ahmedabad",
+    "Hyderabad",
+    "Chennai",
+    "Kolkata"
+  ];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // action for app bar
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = "";
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // left icon on app bar
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // so result based on selection
+    return PokemonHomePage();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // show when some one search for item
+    final suggestionList = query.isEmpty
+        ? recentCities
+        : cities.where((p) => p.startsWith(query)).toList();
+    return ListView.builder(
+        itemBuilder: (context, index) => ListTile(
+              onTap: () {
+                showResults(context);
+              },
+              leading: Icon(Icons.location_city),
+              title: RichText(
+                  text: TextSpan(
+                      text: suggestionList[index].substring(0, query.length),
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                      children: [
+                    TextSpan(
+                        text: suggestionList[index].substring(query.length),
+                        style: TextStyle(color: Colors.grey))
+                  ])),
+            ),
+        itemCount: suggestionList.length);
   }
 }

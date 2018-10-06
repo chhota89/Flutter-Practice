@@ -12,6 +12,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0
   http:
+  cached_network_image:
 #  map_view:
   location:
   share:
@@ -23,9 +24,10 @@ dependencies:
 #  carousel: ^0.0.1
   sqflite: any
   path_provider:
-  rxdart: ^0.16.1
+  rxdart:
   charts_flutter: ^0.4.0
   map_view: 0.0.14
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +40,7 @@ flutter:
     - assets/no_internet.png
     - assets/developer_background.jpg
     - assets/android_frame.png
+    - assets/images/globe.svg
     - assets/resources/lang/tr.json
     - assets/resources/lang/en.json
     - assets/resources/lang/ja.json
